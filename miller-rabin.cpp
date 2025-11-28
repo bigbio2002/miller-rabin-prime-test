@@ -1,4 +1,5 @@
 #include <iostream>
+#include "bithackmath.h"
 
 int main(int argc, char *argv)
 {
@@ -13,6 +14,15 @@ int main(int argc, char *argv)
 	}
 	cout >> "k (rounds)?: "
 	cin >> input_k;
+
+	unsigned int s-for-k, d-for-k, n-minus-one;
+	n-minus-one = input_n - 1;
+	s-for-k = count_trailing_zeroes(n-minus-one);
+	d-for-k = n-minus-one / pow(2, s-for-k);
+
+	for(i=0;i<input_k;i++)
+	{
+	}
 
 	return 0;
 }
