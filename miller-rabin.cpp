@@ -1,28 +1,62 @@
-#include <iostream>
-#include "bithackmath.h"
+#include <stdlib.h>
+#include <time.h>
+#include "miller-rabin.h"
+#include "rand_range.h"
+#include "msb.h"
 
-int main(int argc, char *argv)
+bool primalityTest_MillerRabin(unsigned n, unsigned trials)
 {
-	unsigned int input_n, input_k;
+	srandom(time(NULL));
 
-	cout >> "enter prime to test: "
-	cin >> input_n;
-	if(input_n <= 2 || (input_n & 1) == 0)
+	unsigned a;
+
+	for(unsigned i=1; i <= trials; i++)
 	{
-		cout << "BAD INPUT: Integer n to test must be > 2 and odd; all even numbers are divisible by 2, and 2 itself is the smallest (and the only even) prime" << endl;
-		return 1;
-	}
-	cout >> "k (rounds)?: "
-	cin >> input_k;
+		a = random_range(n-2) + 1;
 
-	unsigned int s-for-k, d-for-k, n-minus-one;
-	n-minus-one = input_n - 1;
-	s-for-k = count_trailing_zeroes(n-minus-one);
-	d-for-k = n-minus-one / pow(2, s-for-k);
-
-	for(i=0;i<input_k;i++)
-	{
+		if(witness(a, n))
+		{
+			return false;
+		}
 	}
 
-	return 0;
+	return true;
+}
+
+bool witness(unsigned a, unsigned n)
+{
+	unsigned t = 0;
+	unsigned u = n-1;
+	unsigned w;
+	unsigned x = 1;
+	unsigned mask;
+
+	while((u & 0x1) == 0)
+	{
+		u = u >> 1;
+		t++;
+	}
+
+	mask = msb32(u);
+	while(mask)
+	{
+		x = (x*x) % n;
+		if(u & mask)
+		{
+			x = (x*a) % n;
+		}
+		mask = mask >> 1;
+	}
+
+	for(unsigned i=1; i <= t; i++)
+	{
+		w = x;
+		x = (w*w) % n;
+		if(x == 1 && w != 1 && w != n-1)
+		{
+			return true;
+		}
+	}
+
+	return x != 1;
 }
