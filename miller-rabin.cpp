@@ -2,7 +2,7 @@
 #include <time.h>
 #include "miller-rabin.h"
 #include "rand_range.h"
-#include "msb.h"
+#include "msb3.h"
 
 bool primalityTest_MillerRabin(unsigned n, unsigned trials)
 {
@@ -27,9 +27,6 @@ bool witness(unsigned a, unsigned n)
 {
 	unsigned t = 0;
 	unsigned u = n-1;
-	unsigned w;
-	unsigned x = 1;
-	unsigned mask;
 
 	while((u & 0x1) == 0)
 	{
@@ -37,7 +34,10 @@ bool witness(unsigned a, unsigned n)
 		t++;
 	}
 
+	unsigned x = 1;
+	unsigned mask;
 	mask = msb32(u);
+
 	while(mask)
 	{
 		x = (x*x) % n;
@@ -48,6 +48,7 @@ bool witness(unsigned a, unsigned n)
 		mask = mask >> 1;
 	}
 
+	unsigned w;
 	for(unsigned i=1; i <= t; i++)
 	{
 		w = x;
@@ -58,5 +59,5 @@ bool witness(unsigned a, unsigned n)
 		}
 	}
 
-	return x != 1;
+	return (x != 1);
 }
