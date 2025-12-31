@@ -47,7 +47,7 @@ bool witness(uint64_t radix, // random number from 1 to n-1 for test
   // factor into mantissa and exponent
   // effectively remove and count zeros to first bit
   int t = 0;
-  while (u & 0x1 == 0x0) {
+  while ((u & 0x1) == 0x0) {
     u = u >> 1;
     t++;
   }
