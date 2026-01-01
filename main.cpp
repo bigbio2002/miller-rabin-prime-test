@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 
 	bool result = primalityTest_MillerRabin(input_n, input_k);
 
-	if(result)
+	if(result != 1)
 		cout << input_n << " is *probably* prime" << endl;
 	else
 		cout << input_n << " is composite/NOT prime" << endl;
