@@ -23,12 +23,12 @@ bool primalityTest_MillerRabin(unsigned n, unsigned trials)
 	return true;
 }
 
-bool witness(unsigned a, unsigned n)
+bool witness(unsigned radix, unsigned n)
 {
-	unsigned t = 0;
 	unsigned u = n-1;
+	unsigned t = 0;
 
-	while((u & 0x1) == 0)
+	while((u & 0x1) == 0x0)
 	{
 		u = u >> 1;
 		t++;
@@ -43,7 +43,7 @@ bool witness(unsigned a, unsigned n)
 		x = (x*x) % n;
 		if(u & mask)
 		{
-			x = (x*a) % n;
+			x = (x*radix) % n;
 		}
 		mask = mask >> 1;
 	}

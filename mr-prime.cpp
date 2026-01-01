@@ -3,6 +3,7 @@
 #include <climits>
 #include <cstdlib>
 #include <iostream>
+#include "rand_range.h"
 
 using namespace std;
 
@@ -55,7 +56,7 @@ bool witness(uint64_t radix, // random number from 1 to n-1 for test
   uint64_t x = russianPeasantPower(u, radix, n),
            w;
 
-  for (int i = 0; i < t; i++) {
+  for (int i = 1; i <= t; i++) {
     w = x;           // last
     x = (w * w) % n; // current
 
@@ -88,11 +89,15 @@ int main(int argc, char *argv[]) {
   }
 
   // trying to reject primality, looking for evidence of compositeness
-  for (int i = 0; i < NumTrials; i++)
-    if (witness(1 + rand() % (n - 1), n)) {
+  uint64_t a;
+  for (int i = 1; i <= NumTrials; i++) {
+    a = random_range(n-2) + 1;
+//    if (witness(1 + rand() % (n - 1), n)) {
+    if (witness(a, n)) {
       cout << "not prime confirmed at trial " << i << endl;
       exit(1);
     }
+  }
 
   cout << "probably prime" << endl;
 
