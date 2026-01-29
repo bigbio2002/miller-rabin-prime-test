@@ -1,7 +1,8 @@
 #ifndef _MSB3_H_
 #define _MSB3_H_
 
-uint64_t msb64(uint64_t u) {
+uint64_t msb64(uint64_t u)
+{
   u |= u >> 1;
   u |= u >> 2;
   u |= u >> 4;
@@ -12,7 +13,8 @@ uint64_t msb64(uint64_t u) {
   return u & ~(u >> 1);
 }
 
-uint32_t msb32(uint32_t u) {
+uint32_t msb32(uint32_t u)
+{
   u |= u >> 1;
   u |= u >> 2;
   u |= u >> 4;

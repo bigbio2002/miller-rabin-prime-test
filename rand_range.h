@@ -5,7 +5,7 @@
 // Posted by Ryan Reich, modified by community. See post 'Timeline' for change history
 // Retrieved 2025-12-26, License - CC BY-SA 3.0
 
-#include <stdlib.h> // For random(), RAND_MAX
+#include <cstdlib> // For random(), RAND_MAX
 
 // Assumes 0 <= max <= RAND_MAX
 // Returns in the closed interval [0, max]
