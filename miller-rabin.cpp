@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "miller-rabin.h"
-#include "rand_range.h"
+#include "random_range.h"
 #include "msb/mostsignificantbit.h"
 
 /* returns false if integer is NOT ptime, returns true if it is */

@@ -1,5 +1,5 @@
-#ifndef _RAND_RANGE_H_
-#define _RAND_RANGE_H_
+#ifndef _RANDOM_RANGE_H_
+#define _RANDOM_RANGE_H_
 
 // Source - https://stackoverflow.com/a/6852396
 // Posted by Ryan Reich, modified by community. See post 'Timeline' for change history

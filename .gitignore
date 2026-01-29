@@ -8,4 +8,5 @@ Makefile
 miller-rabin
 miller-rabin-test
 mr-prime-demo
+random_range_test
 *.o
