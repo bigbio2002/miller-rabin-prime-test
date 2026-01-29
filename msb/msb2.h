@@ -3,7 +3,7 @@
 #ifndef _MSB2_H_
 #define _MSB2_H_
 
-int msb2(unsigned u)
+unsigned msb_DeBrujin(uint32_t u)
 {
 	uint32_t v = u; // find the log base 2 of 32-bit v
 	int r;      // result goes here

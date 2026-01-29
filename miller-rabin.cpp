@@ -5,13 +5,13 @@
 #include "msb/mostsignificantbit.h"
 
 /* returns false if integer is NOT ptime, returns true if it is */
-bool primalityTest_MillerRabin(unsigned n, unsigned trials)
+bool primalityTest_MillerRabin(uint64_t n, uint64_t trials)
 {
 	srandom((unsigned)time(NULL));
 
-	unsigned a;
+	uint64_t a;
 
-	for(unsigned i=1; i <= trials; i++)
+	for(int i=1; i <= trials; i++)
 	{
 		a = random_range(n-2) + 1;
 
@@ -24,9 +24,9 @@ bool primalityTest_MillerRabin(unsigned n, unsigned trials)
 	return true;
 }
 
-bool witness(unsigned radix, unsigned n)
+bool witness(uint64_t radix, uint64_t n)
 {
-	unsigned u = n-1;
+	uint64_t u = n-1;
 	int t = 0;
 
 	while((u & 0x1) == 0x0)
@@ -35,8 +35,8 @@ bool witness(unsigned radix, unsigned n)
 		t++;
 	}
 
-	unsigned x = 1;
-	unsigned mask = mostSignificantBit_64(u);
+	uint64_t x = 1;
+	uint64_t mask = mostSignificantBit_64(u);
 
 	while(mask)
 	{
@@ -48,7 +48,7 @@ bool witness(unsigned radix, unsigned n)
 		mask >>= 1;
 	}
 
-	unsigned w;
+	uint64_t w;
 	for(int i=1; i <= t; i++)
 	{
 		w = x;
