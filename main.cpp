@@ -5,6 +5,8 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+	srandom((unsigned)time(NULL));
+
 	unsigned in_n;
 	int in_k;
 
@@ -27,7 +29,7 @@ int main(int argc, char **argv)
 	if((in_n & 1) == 0)
 	{
 //		cout << "BAD INPUT: Integer n to test must be > 2 and odd; all even numbers are divisible by 2, and 2 itself is the smallest (and the only even) prime" << endl;
-		cout << in_n << " is NOT prime; all even numbers are divisible by 2";
+		cout << in_n << " is NOT prime; all even numbers are divisible by 2" << endl;
 		return 1;
 	}
 

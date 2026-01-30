@@ -2,13 +2,11 @@
 #include <ctime>
 #include "miller-rabin.h"
 #include "random_range.h"
-#include "msb/mostsignificantbit.h"
+#include "msb/msb.h"
 
 /* returns false if integer is NOT ptime, returns true if it is */
 bool primalityTest_MillerRabin(uint64_t n, uint64_t trials)
 {
-	srandom((unsigned)time(NULL));
-
 	uint64_t a;
 
 	for(int i=1; i <= trials; i++)
@@ -17,10 +15,12 @@ bool primalityTest_MillerRabin(uint64_t n, uint64_t trials)
 
 		if(witness(a, n))
 		{
+			// not prime
 			return false;
 		}
 	}
 
+	// not not-prime
 	return true;
 }
 
@@ -36,7 +36,7 @@ bool witness(uint64_t radix, uint64_t n)
 	}
 
 	uint64_t x = 1;
-	uint64_t mask = mostSignificantBit_64(u);
+	uint64_t mask = msb64(u);
 
 	while(mask)
 	{

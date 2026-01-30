@@ -3,7 +3,7 @@
 #include <climits>
 #include <cstdlib>
 #include <iostream>
-#include "rand_range.h"
+#include "random_range.h"
 
 using namespace std;
 
